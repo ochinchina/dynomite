@@ -16,17 +16,17 @@ struct gossip_node;
 typedef rstatus_t (*callback_t)(void *msg);
 typedef void (*data_func_t)(void *);
 
-volatile struct {
+struct c2g_inq{
   long m_getIdx;
   long m_putIdx;
   void *m_entry[C2G_InQ_SIZE];
-} C2G_InQ;
+};
 
-volatile struct {
+struct c2g_outq{
   long m_getIdx;
   long m_putIdx;
   void *m_entry[C2G_OutQ_SIZE];
-} C2G_OutQ;
+} ;
 
 struct ring_msg {
   callback_t cb;
@@ -37,6 +37,8 @@ struct ring_msg {
   struct server_pool *sp;
 };
 
+volatile struct c2g_inq C2G_InQ;
+volatile struct c2g_outq C2G_OutQ;
 struct ring_msg *create_ring_msg(void);
 struct ring_msg *create_ring_msg_with_data(uint32_t capacity);
 struct ring_msg *create_ring_msg_with_size(uint32_t size, bool init_node);
