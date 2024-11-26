@@ -37,8 +37,8 @@ struct ring_msg {
   struct server_pool *sp;
 };
 
-volatile struct c2g_inq C2G_InQ;
-volatile struct c2g_outq C2G_OutQ;
+extern volatile struct c2g_inq C2G_InQ;
+extern volatile struct c2g_outq C2G_OutQ;
 struct ring_msg *create_ring_msg(void);
 struct ring_msg *create_ring_msg_with_data(uint32_t capacity);
 struct ring_msg *create_ring_msg_with_size(uint32_t size, bool init_node);
